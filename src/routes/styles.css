@@ -1,0 +1,44 @@
+/* styles.css */
+
+header {
+    display: flex; /* Використання flexbox для вертикального вирівнювання */
+    flex-direction: column; /* Елементи будуть розташовані по вертикалі */
+    height: 100vh; /* Займає всю висоту вікна браузера */
+    background-color: #ce7a7a; /* Тло хедера */
+    padding: 20px; /* Внутрішній відступ */
+}
+
+.logo {
+    text-align: center; /* Вирівнювання тексту по центру */
+    margin-bottom: 20px; /* Відступ знизу логотипу */
+}
+
+h1 {
+    font-family: Arial, sans-serif;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav li {
+    margin-bottom: 10px; /* Відступ знизу між елементами меню */
+}
+
+nav a {
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+    padding: 10px 20px; /* Внутрішній відступ для посилань */
+    display: block; /* Посилання як блок */
+    text-align: center; /* Вирівнювання тексту по центру */
+    transition: background-color 0.3s; /* Плавний перехід при наведенні курсору */
+}
+
+nav a:hover {
+    background-color: #eee; /* Колір фону посилань при наведенні курсору */
+}
