@@ -17,16 +17,25 @@
 
  /* Стилі для заголовка */
 header {
-  background-color: #000000;
+  /*background-color: #000000;*/
   font-family: "Montserrat", sans-serif;;
   color: #fff;
   padding: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+  background: transparent;
 }
 
 .header-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 /* Стилі для логотипу */

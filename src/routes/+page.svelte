@@ -8,12 +8,13 @@
 	import BarChart from "../Components/BarChart/BarChart.svelte";
 	import PieChart from "../Components/PieChart.svelte";
 	import TileMap from "../Components/TileMap/TileMap.svelte";
+  import Slider from "../Components/Slider/Slider.svelte";
 </script>
 
 <Header></Header>
 <!-- <Counter></Counter> -->
 
-
+<Slider></Slider>
 <div class="center">
 	<TileMap></TileMap>
 	<PieChart></PieChart>
@@ -33,6 +34,9 @@
 <Footer></Footer>
 
 <style>
+  :global(body) {
+    margin: 0 !important;
+  }
 .center {
     width: 100%;
     max-width: 800px;

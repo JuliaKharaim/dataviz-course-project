@@ -8,6 +8,9 @@ const config = {
 			assets: 'dist',
 			fallback: 'index.html' // makes error page
 		}),
+    files: {
+			assets: 'static'
+		},
 		paths: {
 			base: process.argv.includes('dev') ? '' : '/dataviz-course-project'
 		}
