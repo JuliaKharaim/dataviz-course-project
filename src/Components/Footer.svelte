@@ -45,20 +45,6 @@
     width: 200px;
   }
 
-  .menu ul {
-    list-style-type: none;
-    padding: 0;
-  }
-
-  .menu ul li {
-    display: inline;
-    margin-right: 20px;
-  }
-
-  .menu ul li a {
-    color: #C7DDDC;
-    text-decoration: none;
-  }
 
   .description {
     text-align: right;

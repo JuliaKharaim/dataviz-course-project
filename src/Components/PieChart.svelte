@@ -55,6 +55,7 @@
     <div class="chart" bind:clientWidth={width} bind:clientHeight={height}>
       <svg {width} {height} viewBox="{-width / 2}, {-height / 2}, {width}, {height}">
         {#each arcs as segment, i}
+          <!-- svelte-ignore a11y-no-static-element-interactions -->
           <path
             d={arcPath(segment)}
             fill={data[i].fill}
