@@ -18,7 +18,7 @@
  /* Стилі для заголовка */
 header {
   /*background-color: #000000;*/
-  font-family: "Montserrat", sans-serif;;
+  font-family: 'Manrope';
   color: #fff;
   padding: 20px;
   position: absolute;

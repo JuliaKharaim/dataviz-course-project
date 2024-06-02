@@ -11,23 +11,29 @@
   import Slider from "../Components/Slider/Slider.svelte";
 </script>
 
-<Header></Header>
-<!-- <Counter></Counter> -->
+<!-- <Header></Header> -->
+
 
 <Slider></Slider>
 <div class="center">
-	<TileMap></TileMap>
-	<PieChart></PieChart>
-	<BarChart></BarChart>
-	<Map></Map>
-	<ScatterPlot/>
-	<ScatterPlot showObl={'м. Київ'}/>
-	<ScatterPlot showObl={'Харківська область'}/>
+	
+	<div class="counter">
+		<Counter></Counter>
+	</div>
+	
+	<div class="pie">
+		<PieChart></PieChart>
+	</div>
+	
+	<div class="BarChart">
+		<BarChart></BarChart>
+	</div>
 
+	<Map></Map>
 	
 </div>
 
-<!-- <Bubbles></Bubbles> -->
+
 
 
 
@@ -42,6 +48,22 @@
     max-width: 800px;
     margin: 0 auto;
     padding: 0 15px;
+	align-items: center;
+	font-family: 'Manrope';
+  }
+  .counter {
+	margin-top: 100px;
+	margin-bottom: 120px;
+
+  }
+  .pie {
+	margin-top: 50px;
+	margin-bottom: 120px;
+  }
+
+  .BarChart {
+	margin-top: 50px;
+	margin-bottom: 120px;
   }
 
 </style>

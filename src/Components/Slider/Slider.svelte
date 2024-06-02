@@ -3,8 +3,13 @@
 
   let currentIndex = 0;
   const images = [
-    'photo-1.jpg',
-    'photo-2.jpg'
+    'photo-4.jpg',
+    'photo-7.jpg',
+    'photo-9.jpg',
+    'photo-3.jpg',
+    'photo-8.jpg',
+    
+    
   ];
 
   let interval;
@@ -29,8 +34,9 @@
   
   <div class="overlay">
     <div class="container">
-      <h1>Project title</h1>
-      <p class="author">By: Author Name | xx.xx.2020</p>
+      <h1>Подорож Україною</h1>
+      <h2>Мандри під час війни: що відбувається з внутрішнім туризмом в Україні</h2>
+      <p class="author">Хараїм Юлія | 06.06.2024</p>
     </div>
   </div>
 </div>
@@ -60,7 +66,7 @@
   .overlay {
     width: 100%;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: #01342aca;
     position: absolute;
     top: 0;
     left: 0;
@@ -77,14 +83,31 @@
     flex-direction: column;
   }
   h1 {
-    font-size: 60px;
+    font-size: 70px;
+    font-family: 'Manrope';
     display: block;
     width: 100%;
     text-align: center;
+    margin-bottom: 10px;
+  }
+
+  h2 {
+    font-family: 'Manrope';
+    font-weight: 300;
+    font-size: 23px;
+    line-height: 150%;
+    margin-bottom: 150px;
   }
   .author {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Manrope';
   }
+
+  p {
+      font-size: 15px;
+      line-height: 150%;
+    }
+
+
 </style>
 
 

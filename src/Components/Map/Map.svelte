@@ -13,7 +13,7 @@
 	let mouseX = 0
 	let mouseY = 0
 
-    export let colors = ['linen', 'RosyBrown']
+	export let colors = ['#C7DDDC', '#004638']
 
     const getColor = scaleLinear().domain([0.5, 13.8]).range(colors)
 
@@ -67,11 +67,21 @@ csv.forEach(row => {
 		}
 </script>
 
+<div class="content">
+
+    <h2>Область України, де респонденти відпочивали останього разу</h2>
+    <p>Згідно з дослідженням, більш ніж половина респондентів (53,1%) планують провести відпустку в Україні,
+		і лише кожен десятий – виїхати за кордон. Серед тих, хто планує відпустку в Україні, – 44,5% прагнуть
+		відпочивати за межами своєї області. Решта планують відпочивати вдома або в межах своїх областей.
+		До трійки областей, найпопулярніших для відпусток в Україні, увійшли Одеська (13,8%), Львівська (8%) та Київська (7,7%).</p>
+</div>
+
 <main
 	bind:clientWidth={width}
 	bind:clientHeight={height}
 	on:mousemove={getTooltipData}
 >
+
 	<svg
 		width={width}
 		height={height}
@@ -81,7 +91,7 @@ csv.forEach(row => {
 			
         <!-- svelte-ignore a11y-no-static-element-interactions -->
         <path d={obl.path} 
-            fill={name === 'Луганська область' ? 'black' : mapData[name] ? getColor(parseFloat(mapData[name]['number'])) : '#ccc' }
+            fill={name === 'Луганська область' ? '#DCED59' : mapData[name] ? getColor(parseFloat(mapData[name]['number'])) : '#ccc' }
             class:pulse={name === 'Луганська область'}
 			on:mousemove={() => {tooltipData = {
 				name: name,
@@ -111,6 +121,16 @@ csv.forEach(row => {
 </main>
 
 <style>
+	.content {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+		font-family: 'Manrope';
+		/* font-weight: 900; */
+
+    }
+
 	main {
 		justify-content: center;
 		width: 70vw;
@@ -118,19 +138,18 @@ csv.forEach(row => {
 		display: flex;
 		overflow: hidden;
 		margin-top: 100px;
-		margin-bottom: 100px;
+		margin-bottom: 150px;
 		
 	}
 
 	path {
-		/* fill: black; */
 		stroke: #fff;
-		/* opacity: 0.5; */
 		transition: opacity 0.4s ease-in-out;
 		transition-delay: 0.8s;
 	}
+	
 	path:hover {
-		fill: rgb(239, 222, 228);
+		fill: #DCED59;
 		cursor: pointer;
 	}
 
@@ -148,29 +167,35 @@ csv.forEach(row => {
 		position: absolute;
 		color: rgb(255, 255, 255);
 		padding: 10px;
-		background-color: rgba(0, 0, 0, 0.555);
-		font-family: sans-serif;
+		background-color: #01342aca;
+		font-family: 'Manrope';
 	}
 
 	.title {
-		font-family: sans-serif;
+		font-family: 'Manrope';
 	}
 
 	.legend {
 		position: absolute;
-		bottom: 50px;
+		bottom: 10px;
 		left: 30px;
 		width: 200px;
-		font-family: "Montserrat", sans-serif;
-		font-size: 13px;
+		font-family: 'Manrope';
+		font-size: 10px;
 		color: black;
 	}
+
+	.legend p {
+		font-size: 15px;
+		margin-bottom: 15px; 
+		line-height: 140%;
+  	}
 
 	.stripe {
 		width: 100%;
 		height: 20px;
 		background-color: beige;
-		background: linear-gradient(90deg, rgba(250,240,230,1) 35%, rgba(188,143,143,1) 100%);
+		background: linear-gradient(90deg, #C7DDDC 35%, #004638 100%);
 		border-radius: 3px;
 	}
 
@@ -181,8 +206,17 @@ csv.forEach(row => {
 	
 	}
 	.values p {
-		font-size: 10px;
+		font-size: 15px;
 		display: block;
 
 	}
+	h2 {
+		font-size: 40px;
+	}
+
+	p {
+      font-size: 17px;
+      line-height: 150%;
+	  margin-bottom: 0px;
+    }
 </style>

@@ -24,7 +24,7 @@
     {type: 'Гастро туризм', value: 21.8},
     {type: 'Активний відпочинок', value: 16},
     {type: 'Екотуризм', value: 11},
-    {type: 'Ретріт та оздоровлення', value: 9}
+    {type: 'Ретрит та оздоровлення', value: 9}
   ]
 
   $: xScale = scaleLinear()
@@ -39,7 +39,12 @@
 
 </script>
 
-<h2>Напрямки внутрішнього туризму</h2>
+<div class="content">
+    <h2>Напрямки внутрішнього туризму</h2>
+    <p>Опитування показало, що 54% респондентів надають перевагу міському туризму та пішим прогулянкам. Екскурсії до історичних пам’яток і музеїв обирають 28% українців, відпочинок на пляжі — 23%, подієвий туризм — 23%, гастрономічну подорож — 22%. Активний відпочинок до душі 16%, екотуризм — 11%, рекреаційний — 9% опитаних.</p>
+</div>
+
+
 <div class="main" bind:clientWidth={width} bind:clientHeight={height}>
     <svg {width} {height}>
       
@@ -68,7 +73,7 @@
         y={yScale(i)} 
         width={xScale(d.value)} 
         height={barH} 
-        fill={'RosyBrown'}/>
+        fill={'#DCED59'}/>
 
         <text x={margin.left} y={yScale(i) - 5}>{d.type}</text>
 
@@ -82,9 +87,30 @@
     .main {
         width: 100%;
         height: 500px;
-       
-      
     }
+       
+    .content {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+		font-family: 'Manrope';
+    }
+
+    h2 {
+        font-size: 40px;
+        font-weight: 800;
+        line-height: 40px;
+        line-height: 120%;
+    }
+
+    p {
+        font-size: 17px;
+        line-height: 150%;
+        margin-bottom: 50px;
+    }
+
+
     svg{
         /* background-color: #FAF0E6; */
         border-radius: 10px;
@@ -96,7 +122,9 @@
     }
 
     text {
-        font-family: sans-serif;
+        font-family: 'Manrope';
         font-size: 13px;
     }
+    
+
 </style>

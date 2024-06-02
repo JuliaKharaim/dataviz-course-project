@@ -55,9 +55,9 @@ const mouseLeave = () => {
 
 
         >
-             <rect width={cellSize} height={cellSize} fill='#BC8F8F' stroke='#fff'></rect>     <!-- Колір великих квадратиків -->
-             {#if block.key != 'KI'}
-             <text x={10} y={20} fill='white'>{block.key}</text>
+            <rect width={cellSize} height={cellSize} fill='#C7DDDC' stroke='#fff'></rect>     <!-- Колір великих квадратиків -->
+            {#if block.key != 'KI'}
+            <text x={10} y={20} fill='#004638'>{block.key}</text>
              {:else}
              <text x={cellSize- 10} y={cellSize - 10} text-anchor="end" fill='white'>{block.key}</text>
              {/if}
