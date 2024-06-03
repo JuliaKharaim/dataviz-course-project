@@ -56,14 +56,14 @@
      })
      
 
-     $: console.log(extent(dataByObl, d => new Date(d.start)))
+    // $: console.log(extent(dataByObl, d => new Date(d.start)))
      $: names = Object.keys(unicNames)
 
      let selected
      $: if (selected) {
         showObl = selected
      }
-     $: console.log(selected)
+    // $: console.log(selected)
 </script>
 
 <form>

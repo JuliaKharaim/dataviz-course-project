@@ -2,14 +2,15 @@
     import { onMount } from 'svelte';
     import { cubicOut } from 'svelte/easing';
     import { tweened } from 'svelte/motion';
+    import viewport from '../useViewportAction';
   
     let count = 0;
     const duration = 2000;
     const counter = tweened(0, { duration, easing: cubicOut });
   
-    onMount(() => {
-      counter.set(5525);
-    });
+    //onMount(() => {
+    //  counter.set(5525);
+    //});
   
     counter.subscribe(value => {
       count = Math.round(value);
@@ -17,7 +18,10 @@
   </script>
   
   <main>
-    <div class="content">
+    <div class="content" 
+      use:viewport
+      on:enterViewport={() => counter.set(5525)}
+    >
       <h1>Кількість опитаних</h1>
       <p>Вік опитаних респондентів 14-34р. Дати опитування: 18-27.08 2023р.</p>
       <h2>{count}</h2>
@@ -38,7 +42,7 @@
     }
   
     h1 {
-      white-space: nowrap;
+      /*white-space: nowrap;*/
       font-size: 40px;
       color: #000000;
       margin-bottom: 1rem;

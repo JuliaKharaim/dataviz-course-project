@@ -55,14 +55,15 @@
                 y1={margin.top} 
                 x2={xScale(tick)} 
                 y2={h}
-                stroke={'#e9e9e9'}
-                stroke-width="1"/>
+                stroke={tick % 5 == 0 ? '#999' :'#e9e9e9'}
+                stroke-width={tick % 5 == 0 ? 0.5 : 1}/>
 
                 {#if tick % 5 == 0}
-                <text 
-                x={xScale(tick)} 
-                y={h + 10} 
-                text-anchor="middle">{tick}</text>
+                  <text 
+                    x={xScale(tick)} 
+                    y={h + 10} 
+                    text-anchor="middle">{tick == '50' ? '50%' : tick}
+                  </text>
                 {/if}
             {/each}
         </g>
@@ -90,10 +91,10 @@
     }
        
     .content {
-        align-items: center;
+        /*align-items: center;*/
         display: flex;
         flex-direction: column;
-        align-items: center;
+        /*align-items: center;*/
 		font-family: 'Manrope';
     }
 

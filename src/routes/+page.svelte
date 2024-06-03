@@ -44,16 +44,16 @@
     margin: 0 !important;
   }
 .center {
-    width: 100%;
+    width: calc(100% - 30px);
     max-width: 800px;
     margin: 0 auto;
     padding: 0 15px;
-	align-items: center;
-	font-family: 'Manrope';
+    align-items: center;
+    font-family: 'Manrope';
   }
   .counter {
-	margin-top: 100px;
-	margin-bottom: 120px;
+	/*margin-top: 100px;
+	margin-bottom: 120px;*/
 
   }
   .pie {

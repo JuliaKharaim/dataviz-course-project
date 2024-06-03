@@ -26,11 +26,11 @@ $: scaleY = scaleLinear()
     .domain([0, 110])
     .range([cellSize, 0])
 
-$: console.log(gridData, csv, mapData)
+//$: console.log(gridData, csv, mapData)
 
 const mouseOver = (el) => {
     selectAll(`.${el.key} .label`).style('display', 'block')
-    console.log(el)
+    //console.log(el)
   }
 
 const mouseLeave = () => {

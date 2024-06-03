@@ -21,14 +21,12 @@
     const pieChart = pie()
       .sort(null)
       .value((d) => d.value);
-  
-    const arcPath = arc()
-      .innerRadius(100)
-      .outerRadius(200);
+ 
+	$: arcPath = arc()
+		.innerRadius(Math.min(width, height) / 4)
+		.outerRadius(Math.min(width, height) / 2 - 25);
   
     const arcs = pieChart(data);
-  
-    $: console.log(pie, arc);
   
     const tooltipData = null;
     let mouseX = 0;
@@ -51,7 +49,7 @@
     </p>
   </div>
   
-  <div class="main">
+  <div class="main" >
     <div class="chart" bind:clientWidth={width} bind:clientHeight={height}>
       <svg {width} {height} viewBox="{-width / 2}, {-height / 2}, {width}, {height}">
         {#each arcs as segment, i}
@@ -87,17 +85,20 @@
   
     .main {
       width: 100%;
-      height: 500px;
-      display: grid;
-      grid-template-columns: 1fr 200px;
-      align-items: center;
+      /*height: 500px;*/
+      /*display: grid;*/
+      /*grid-template-columns: 2fr 1fr;
+      align-items: center;*/
+      display: inline-flex;
+      justify-content: center;
       font-family: 'Manrope';
       margin-bottom: 40px;
       position: relative;
     }
-  
+    
     .chart {
       width: 100%;
+      max-width: 500px;
       height: 500px;
     }
   
@@ -110,52 +111,72 @@
     stroke-width: 2;
   }
 
-  .tooltip {
+  /*.tooltip {
     position: absolute;
     color: rgb(255, 255, 255);
     padding: 10px;
     background-color: #01342aca;
     font-family: 'Manrope';
+  }*/
+  .legend {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
   }
   
-    .legend ul {
-      margin: 0;
-      padding: 0;
-      font-family: 'Manrope';
-    }
-  
-    .legend ul li {
-      list-style: none;
-      display: flex;
-      align-items: baseline;
-      margin-bottom: 10px; /* Додає відстань між елементами списку */
-    }
-  
-    .legend ul li span {
-      /** Кружечки */
-      width: 15px;
-      height: 15px;
-      display: block;
-      margin-right: 15px; /* Додає відстань між кружечком і текстом */
-      border-radius: 50%;
-    }
-  
-    h1 {
-      width: 100%;
-      text-align: center;
-    }
-  
-    h2 {
-      font-size: 40px;
-      font-weight: 800;
-      line-height: 40px;
-      line-height: 120%;
-    }
-  
-    p {
-      font-size: 17px;
-      line-height: 150%;
-    }
+  .legend ul {
+    margin: 0;
+    padding: 0;
+    font-family: 'Manrope';
+    display: block;
+  }
 
+  .legend ul li {
+    list-style: none;
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 10px; /* Додає відстань між елементами списку */
+    width: fit-content;
+  }
+
+  .legend ul li span {
+    /** Кружечки */
+    width: 15px;
+    height: 15px;
+    display: block;
+    margin-right: 15px; /* Додає відстань між кружечком і текстом */
+    border-radius: 50%;
+  }
+
+  h1 {
+    width: 100%;
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 40px;
+    font-weight: 800;
+    line-height: 40px;
+    line-height: 120%;
+  }
+
+  p {
+    font-size: 17px;
+    line-height: 150%;
+  }
+
+  @media (max-width: 840px) {
+    .main {
+      flex-direction: column;
+      align-items: center;
+    }
+    .legend ul li {
+      display: inline-flex;
+      margin: 0 10px;
+      min-width: 140px;
+      margin-top: 20px;
+    }
+  }
   </style>
   

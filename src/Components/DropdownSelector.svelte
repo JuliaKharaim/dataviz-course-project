@@ -5,7 +5,7 @@
     let selectOpen = false
     const selectHandler = () => {
       selectOpen = !selectOpen;
-      console.log("Dropdown Open:", selectOpen); // Log the status of selectOpen
+      //console.log("Dropdown Open:", selectOpen); // Log the status of selectOpen
     }
     const handleClick = (e) => (selectedItem = e)
   </script>

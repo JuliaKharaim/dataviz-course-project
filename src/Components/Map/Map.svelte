@@ -39,7 +39,7 @@
 //     $: console.log(oblData['Львівська область'])
 
 let mapData = {}
-$: console.log(mapData)
+//$: console.log(mapData)
 
 csv.forEach(row => {
 	mapData[row.oblast] = row
@@ -113,8 +113,8 @@ csv.forEach(row => {
 		<p>Найпопулярніша область України для туризму </p>
 		<div class="stripe"></div>
 		<div class="values">
-			<p>0,8</p>
-			<p>13,8</p>
+			<p>0,8%</p>
+			<p>13,8%</p>
 		</div>
 	</div>
 
@@ -133,7 +133,7 @@ csv.forEach(row => {
 
 	main {
 		justify-content: center;
-		width: 70vw;
+		width: 100%;
 		height: 70vh;
 		display: flex;
 		overflow: hidden;
@@ -171,6 +171,15 @@ csv.forEach(row => {
 		font-family: 'Manrope';
 	}
 
+  .tooltip p {
+    margin: 0;
+    padding: 0;
+    font-size: 13px;
+  }
+  .tooltip .title {
+    font-size: 15px;
+  }
+
 	.title {
 		font-family: 'Manrope';
 	}
@@ -178,7 +187,7 @@ csv.forEach(row => {
 	.legend {
 		position: absolute;
 		bottom: 10px;
-		left: 30px;
+		left: 0px;
 		width: 200px;
 		font-family: 'Manrope';
 		font-size: 10px;
@@ -193,7 +202,7 @@ csv.forEach(row => {
 
 	.stripe {
 		width: 100%;
-		height: 20px;
+		height: 15px;
 		background-color: beige;
 		background: linear-gradient(90deg, #C7DDDC 35%, #004638 100%);
 		border-radius: 3px;
@@ -219,4 +228,15 @@ csv.forEach(row => {
       line-height: 150%;
 	  margin-bottom: 0px;
     }
+
+  @media (max-width: 500px) {
+    main {
+      margin-top: 0px;
+      height: 60vh;
+    }
+    .legend {
+      width: 100%;
+      bottom: 0px;
+    }
+  }
 </style>

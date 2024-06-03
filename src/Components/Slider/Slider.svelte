@@ -97,6 +97,9 @@
     font-size: 23px;
     line-height: 150%;
     margin-bottom: 150px;
+    display: block;
+    padding: 15px;
+    text-align: center;
   }
   .author {
     font-family: 'Manrope';
