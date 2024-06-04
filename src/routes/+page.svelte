@@ -9,6 +9,7 @@
 	import PieChart from "../Components/PieChart.svelte";
 	import TileMap from "../Components/TileMap/TileMap.svelte";
   import Slider from "../Components/Slider/Slider.svelte";
+  import Forcechart from "../Components/ForceLayout/Forcechart.svelte";
 </script>
 
 <!-- <Header></Header> -->
@@ -29,7 +30,10 @@
 		<BarChart></BarChart>
 	</div>
 
+	<Forcechart></Forcechart>
+
 	<Map></Map>
+
 	
 </div>
 
