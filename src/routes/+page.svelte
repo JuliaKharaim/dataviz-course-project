@@ -25,12 +25,15 @@
 	<div class="pie">
 		<PieChart></PieChart>
 	</div>
+
+	<Forcechart></Forcechart>
 	
 	<div class="BarChart">
 		<BarChart></BarChart>
 	</div>
 
-	<Forcechart></Forcechart>
+
+
 
 	<Map></Map>
 
@@ -69,5 +72,6 @@
 	margin-top: 50px;
 	margin-bottom: 120px;
   }
+
 
 </style>

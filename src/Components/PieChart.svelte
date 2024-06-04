@@ -201,6 +201,7 @@
 		padding: 10px;
 		background-color: #01342aca;
 		font-family: 'Manrope';
+    border-radius: 10px;
 	}
   .tooltip p {
     margin: 0;

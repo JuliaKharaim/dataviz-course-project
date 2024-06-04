@@ -17,7 +17,7 @@
   onMount(() => {
     interval = setInterval(() => {
       currentIndex = (currentIndex + 1) % images.length;
-    }, 4000);
+    }, 3500);
   });
 
 </script>

@@ -169,6 +169,7 @@ csv.forEach(row => {
 		padding: 10px;
 		background-color: #01342aca;
 		font-family: 'Manrope';
+		border-radius: 10px;
 	}
 
   .tooltip p {
@@ -192,6 +193,7 @@ csv.forEach(row => {
 		font-family: 'Manrope';
 		font-size: 10px;
 		color: black;
+		
 	}
 
 	.legend p {
