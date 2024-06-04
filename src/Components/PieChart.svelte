@@ -1,79 +1,96 @@
 <script>
-    import { pie, arc } from 'd3';
-  
-    let data = [
-      { name: '1-2 рази', value: 26, fill: "#DCED59" },
-      { name: '3-5 разів', value: 12, fill: "#C7DDDC" },
-      { name: 'Більше 5 разів', value: 7.3, fill: "#FC5A31" },
-      { name: 'Не відвідували', value: 54, fill: "#004638" },
-    ];
-  
-    let width = 500;
-    let height = 500;
-  
-    let margin = {
-      top: 10,
-      left: 10,
-      bottom: 10,
-      right: 10,
-    };
-  
-    const pieChart = pie()
-      .sort(null)
-      .value((d) => d.value);
- 
-	$: arcPath = arc()
-		.innerRadius(Math.min(width, height) / 4)
-		.outerRadius(Math.min(width, height) / 2 - 25);
-  
-    const arcs = pieChart(data);
-  
-    const tooltipData = null;
-    let mouseX = 0;
-    let mouseY = 0;
-  
-    const getTooltipData = (event) => {
-      // console.log(event.layerX, event.layerY)
-      mouseX = event.layerX + 10;
-      mouseY = event.layerY;
-    };
-  </script>
-  
-  <div class="content">
-    <h2>Скільки разів українці відвідували інші регіони України з туристичною метою з 24 лютого 2022 року</h2>
-    <p>
-      Згідно з дослідженням, від часу повномасштабного вторгнення понад 45% опитаних
-      подорожували країною з туристичною метою. Ставлення до мандрів у 23% українців
-      не змінилося. 21% вважають, що подорожами вони підтримують економіку країни.
-      Стільки ж респондентів уникають будь-яких вояжів через можливу небезпеку
-    </p>
+  import { pie, arc } from 'd3';
+
+  let data = [
+    { name: '1-2 рази', value: 26, fill: "#DCED59" },
+    { name: '3-5 разів', value: 12, fill: "#C7DDDC" },
+    { name: 'Більше 5 разів', value: 7.3, fill: "#FC5A31" },
+    { name: 'Не відвідували', value: 54, fill: "#004638" },
+  ];
+
+  let width = 500;
+  let height = 500;
+
+  let margin = {
+    top: 10,
+    left: 10,
+    bottom: 10,
+    right: 10,
+  };
+
+  const pieChart = pie()
+    .sort(null)
+    .value((d) => d.value);
+
+  $: arcPath = arc()
+    .innerRadius(Math.min(width, height) / 4)
+    .outerRadius(Math.min(width, height) / 2 - 25);
+
+  const arcs = pieChart(data);
+
+  let tooltipData = null;
+  let mouseX = 0;
+  let mouseY = 0;
+
+  const getTooltipData = (event) => {
+    mouseX = event.layerX + 10;
+    mouseY = event.layerY;
+    tooltipData = true;
+  };
+
+  let name = '';
+  let value = '';
+
+</script>
+
+<div class="content">
+  <h2>Скільки разів українці відвідували інші регіони України з туристичною метою з 24 лютого 2022 року</h2>
+  <p>
+    Згідно з дослідженням, від часу повномасштабного вторгнення понад 45% опитаних
+    подорожували країною з туристичною метою. Ставлення до мандрів у 23% українців
+    не змінилося. 21% вважають, що подорожами вони підтримують економіку країни.
+    Стільки ж респондентів уникають будь-яких вояжів через можливу небезпеку
+  </p>
+</div>
+
+<div class="main">
+  <div class="chart" bind:clientWidth={width} bind:clientHeight={height}>
+    <svg {width} {height} viewBox="{-width / 2}, {-height / 2}, {width}, {height}">
+      <!-- svelte-ignore a11y-mouse-events-have-key-events -->
+      {#each arcs as segment, i}
+        <!-- svelte-ignore a11y-no-static-element-interactions -->
+        <!-- svelte-ignore a11y-mouse-events-have-key-events -->
+        <path
+          d={arcPath(segment)}
+          fill={data[i].fill}
+          stroke={'#fff'}
+          on:mouseover={getTooltipData}
+          on:mousemove={() => {
+            name = segment.data.name;
+            value = segment.data.value;
+          }}
+          on:mouseout={() => (tooltipData = false)}
+        />
+      {/each}
+    </svg>
   </div>
-  
-  <div class="main" >
-    <div class="chart" bind:clientWidth={width} bind:clientHeight={height}>
-      <svg {width} {height} viewBox="{-width / 2}, {-height / 2}, {width}, {height}">
-        {#each arcs as segment, i}
-          <!-- svelte-ignore a11y-no-static-element-interactions -->
-          <path
-            d={arcPath(segment)}
-            fill={data[i].fill}
-            stroke={'#fff'}
-            on:mousemove={getTooltipData}
-          />
-        {/each}
-      </svg>
-    </div>
-  
-    <div class="legend">
-      <ul>
-        {#each data as d}
-          <li>
-            <span style={`background: ${d.fill}`}></span> {d.name}
-          </li>
-        {/each}
-      </ul>
-    </div>
+
+  <div class="tooltip" style={`top: ${mouseY + 5}px; left: ${mouseX}px; visibility: ${tooltipData ? 'visible' : 'hidden'}`}>
+    <p>{name}</p>
+    <p>{value}%</p>
   </div>
+
+  <div class="legend">
+    <ul>
+      {#each data as d}
+        <li>
+          <span style={`background: ${d.fill}`}></span> {d.name}
+        </li>
+      {/each}
+    </ul>
+  </div>
+</div>
+
     
   <style>
     .content {
@@ -177,6 +194,17 @@
       min-width: 140px;
       margin-top: 20px;
     }
+  }
+  .tooltip {
+		position: absolute;
+		color: rgb(255, 255, 255);
+		padding: 10px;
+		background-color: #01342aca;
+		font-family: 'Manrope';
+	}
+  .tooltip p {
+    margin: 0;
+    padding: 0;
   }
   </style>
   
